@@ -1,0 +1,100 @@
+@w: #fff;
+@b: #000;
+@red: #B9241F;
+@blue: #0A4A81;
+
+@maux : 40px;
+.mt{margin-top: @maux;} .mt2{margin-top: @maux*2;}
+.mb{margin-top: @maux;} .mb2{margin-top: @maux*2;}
+
+
+html{height: 100%;}
+body{
+  height: 100%;
+  background-image: url(img/bg.jpg);
+  background-size: cover; background-position: center;
+  background-attachment: fixed;
+  .leftbg,.rightbg{
+    position: fixed;
+    height: 100%; width: 50%;
+    top: 0;
+  }
+}
+
+.v-align{
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+nav.tabs{
+  background: @w;
+  ul{
+    li{
+      a span{
+        color:@b;
+        &:hover{
+          color:@blue;
+        }
+      }
+      &.is-active{
+        a span{
+          color:@blue; font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+
+.tab-item{
+  .container{
+    margin-top: 40px; margin-bottom: 40px;
+  }
+  color: @w;
+  strong, label{color:@w;}
+  h1,h2,h3,p { text-shadow: 0 2px 4px @b; }
+  h1{line-height: 1.2; font-weight: bold;}
+  label{text-align: left; margin-bottom: .5em;}
+}
+
+
+.puzzle-container{
+}
+.puzzle-pile{
+
+}
+
+
+footer.footer{
+  background: @w;
+  position: fixed;
+  bottom: 0; left: 0;
+  width: 100%;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  a{color:@red;}
+}
+
+
+.modal-background{
+  background: fade(@w, 45%);
+
+  @mar : 8%;
+  //left: @mar; top: @mar; right: @mar; bottom: @mar;
+}
+
+
+.ui-draggable:not(.correct){
+  outline: 1px solid @blue;
+}
+
+
+
+.snappuzzle-wrap { position: relative; display: block; }
+        .snappuzzle-pile { position: relative; }
+        .snappuzzle-piece { cursor: move; }
+        .snappuzzle-slot { position: absolute; background: #fff; opacity: .8; }
+        .snappuzzle-slot-hover { background: #eee; }

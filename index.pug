@@ -1,0 +1,131 @@
+doctype html
+html(lang="es")
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons")
+    link(rel="stylesheet", type="text/css", href="app/app.css")
+    link(rel="icon" type="image/png" href="favicon.png")
+
+  body
+  
+
+    
+    #app
+        b-tabs(position="is-right" v-model="activeTab").block
+          b-tab-item(label="HOME").home
+            .container
+              .columns
+                .column.is-8.is-offset-2
+                  h1.is-size-1.has-text-centered.mt2 ¿CUÁNTOS BALONES ADIDAS HAY EN EL AUTO?
+                  .has-text-centered.mt2
+                    button(@click="activeTab = 1").button.is-large.is-info
+                      span Mecánica
+                      span.icon: i.material-icons keyboard_arrow_right
+          b-tab-item(label="MECÁNICA")
+            .container
+              .columns
+                .column.is-6
+                  .has-text-centered
+                    img(src="app/img/adidas.png", alt="Adidas").mt2
+                .column.is-6
+                  h1.is-size-2.has-text-centered ¿CUÁNTOS BALONES ADIDAS HAY EN EL AUTO?
+                  .has-text-centered.is-size-5.is-uppercase
+                    p.mt Adquiere productos Adidas y Reebok y registra tus datos donde podrás calcular el número de balones que hay en el automóvil.
+                    p.mt: strong Si tu cálculo es correcto, <br>el automóvil puede ser tuyo.
+                    p.is-size-4: strong Mientras más compras realices mejor será tu recompensa.
+                    p.mt Pide informes con tu vendedor. 
+                    .has-text-centered.mt
+                      button(@click="activeTab = 2").button.is-large.is-info
+                        span Registro y cálculo
+                        span.icon: i.material-icons keyboard_arrow_right
+          b-tab-item(label="REGISTRO Y CÁLCULO")
+            .container
+              .columns
+                .column: h1.is-size-1.has-text-centered Registra tus datos y tus tickets
+              .columns
+                .column.is-10.is-offset-1
+                  form(action="#").registryForm
+                    b-field(grouped)
+                      b-field(label="Nombre" expanded)
+                        b-input
+                      b-field(label="Teléfono" expanded)
+                        b-input
+                      b-field(label="Correo electrónico" expanded)
+                        b-input(type="email")
+                    .columns
+                      .column.is-4.is-offset-4
+                        .field
+                          .field-label
+                            label.label Balones dentro del auto
+                          .field-body
+                            .field
+                              .control
+                                input(type="number").has-text-centered.is-large.input
+                    
+                    
+                    .field.is-horizontal(v-for="(ticket,index) in tickets")
+                      .field-label
+                        label.label Registra tu ticket
+                      .field-body
+                        .field
+                          .control.is-expanded.has-icons-left
+                            input(type="text" placeholder="Número de ticket" v-model.trim="ticket.number").input
+                            span.icon.is-small.is-left: b-icon(icon="confirmation_number")
+                        .field
+                          .control.is-expanded.has-icons-left
+                            input(type="number" placeholder="Monto" v-model.trim.number="ticket.amount").input
+                            span.icon.is-small.is-left: b-icon(icon="attach_money")
+                        .field
+                          .control
+                            button(type="button" @click="removeTicket(index)").button Eliminar ticket
+                      
+                    .columns
+                      .column.is-4.is-offset-4.has-text-centered
+                        button(type="button" @click="addTicket()").button.is-info
+                          span Agregar ticket
+                          span.icon: b-icon(icon="note_add")
+                    
+                    
+                    .columns
+                      .column.is-4.is-offset-4
+                        .field
+                          .field-label
+                            label.label Monto total
+                            .total.is-size-2 ${{total.toFixed(2)}}     
+                    
+                    .has-text-centered.mt
+                      button(@click="activeTab=3").button.is-large.is-info
+                        span Guardar datos
+                        
+                                
+          b-tab-item(label="ROMPECABEZAS")
+            .container
+              .columns
+                .column: h1.is-size-1.has-text-centered Rompecabezas
+              .columns.mt.has-text-centered.puzzle-container
+                .column.is-6
+                   img(src="app/img/puzzle1.png").puzzle.is-fluid
+                .column.is-6#puzzle-pile
+                  
+
+    footer.footer
+      nav.level
+        .level-left
+          .level-item: img(src="app/img/grabasa.png", alt="Grabasa")
+        .level-right
+          p.level-item: a(data-page) Aviso de privacidad
+          p.level-item: a(data-page) Términos y condiciones
+          
+          
+
+    
+    
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js")
+    script(src="https://unpkg.com/vue@2.4.2/dist/vue.min.js")
+    script(src="https://unpkg.com/buefy")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js")
+    script(src="app/jquery.snap-puzzle.min.js")
+    script(src="app/app.js")
+    script(src="http://livejs.com/live.js")
