@@ -1,3 +1,24 @@
+@font-face {
+    font-family: "adiBlack";
+    src: url('fonts/adineuePRO-BlackWeb.eot');
+    src: url('fonts/adineuePRO-BlackWeb.eot?#iefix') format('embedded-opentype'),
+    	 url('fonts/adineuePRO-BlackWeb.woff2') format('woff2'),
+    	 url('fonts/adineuePRO-BlackWeb.woff') format('woff'),
+    	 url('fonts/adineuePRO-BlackWeb.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: "adiLight";
+    src: url('fonts/adineuePRO-LightWeb.eot');
+    src: url('fonts/adineuePRO-LightWeb.eot?#iefix') format('embedded-opentype'),
+    	 url('fonts/adineuePRO-LightWeb.woff2') format('woff2'),
+    	 url('fonts/adineuePRO-LightWeb.woff') format('woff'),
+    	 url('fonts/adineuePRO-LightWeb.ttf') format('truetype');
+    font-weight: normal;
+    letter-spacing: 1px;
+}
+
 @w: #fff;
 @b: #000;
 @red: #B9241F;
@@ -22,7 +43,11 @@ body{
     height: 100%; width: 50%;
     top: 0;
   }
+  font-family: 'adiLight', Arial, sans-serif;
 }
+
+input, button, button span, strong{ font-family: 'adiLight', Arial, sans-serif; }
+h1, h2, h3, h4 , h5, h6{ font-family: 'adiBlack', Arial, sans-serif; }
 
 .v-align{
   position: relative;
