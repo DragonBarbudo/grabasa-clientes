@@ -10,7 +10,8 @@ var app = new Vue({
       activeTab: 0,
       tickets : [],
       activeModal : true,
-      timeTracker : 0
+      timeTracker : 0,
+      user : {}
     },
     methods: {
       addTicket : function(){
@@ -53,7 +54,26 @@ var app = new Vue({
                       message: 'Terminanste el rompecabezas en '+whole.timeTracker+ ' segundos <br>¡Felicidades!',
                       confirmText: 'Gracias por participar',
                       onConfirm: () => {
-                        location.reload();
+                        
+                        //ADD USER
+                        app.user.monto = app.total.toFixed(2);
+                        app.user.tiempo = whole.timeTracker;
+
+                        console.log(app.user);
+                        
+                        fetch('https://dragonbarbudo.com/api/grabasa/client/add/',{ method: "POST", body: JSON.stringify(app.user) })
+                        .then(function(u){ return u.json();} )
+                        .then(
+                            function(json){ 
+                                console.log(json);
+                                app.$snackbar.open("Datos almacenados");
+                                
+                                setTimeout(function(){location.reload();},2000);
+                            }
+                        );
+                        
+
+
                       }
                     });
                 }

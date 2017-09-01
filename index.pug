@@ -48,12 +48,12 @@ html(lang="es")
                 .column.is-10.is-offset-1
                   form(action="#").registryForm
                     b-field(grouped)
-                      b-field(label="Nombre" expanded)
-                        b-input
+                      b-field(label="Nombre"  expanded)
+                        b-input(v-model="user.nombre")
                       b-field(label="Teléfono" expanded)
-                        b-input
+                        b-input(v-model="user.telefono")
                       b-field(label="Correo electrónico" expanded)
-                        b-input(type="email")
+                        b-input(type="email" v-model="user.correo")
                     .columns
                       .column.is-4.is-offset-4
                         .field
@@ -62,8 +62,8 @@ html(lang="es")
                           .field-body
                             .field
                               .control
-                                input(type="number").has-text-centered.is-large.input
-                    
+                                input(type="number" v-model="user.balones").has-text-centered.is-large.input
+
                     
                     .field.is-horizontal(v-for="(ticket,index) in tickets")
                       .field-label
@@ -96,7 +96,7 @@ html(lang="es")
                             .total.is-size-2 ${{total.toFixed(2)}}     
                     
                     .has-text-centered.mt
-                      button(@click="activeTab=3").button.is-large.is-info
+                      button(@click="activeTab=3" type="button").button.is-large.is-info
                         span Guardar datos
                         
                                 
